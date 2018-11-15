@@ -1,10 +1,10 @@
 FIREWALL
 =======================
-##### [1. Definisi](#1-definisi)
-##### [2. Fungsi firewall](#2-fungsi-firewall)
-##### [3. Cara Kerja Firewall](#3-cara-kerja-firewall)
-##### [4. Jenis-jenis Firewall](#4-jenis-jenis-firewall)
-##### [5. IPTables](#5-iptables)
+##### [Definisi](#1-definisi)
+##### [Fungsi firewall](#2-fungsi-firewall)
+##### [Cara Kerja Firewall](#3-firewall)
+##### [Jenis-jenis Firewall](#4-jenis-jenis-firewall)
+##### [IPTables](#5-iptables)
 # 
 #
 ## 1. **Definisi**
