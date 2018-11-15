@@ -2,7 +2,7 @@ FIREWALL
 =======================
 ##### [Definisi](#1-definisi)
 ##### [Fungsi firewall](#2-fungsi-firewall)
-##### [Cara Kerja Firewall](#3-firewall)
+##### [Cara Kerja Firewall](#3-cara-kerja-firewall)
 ##### [Jenis-jenis Firewall](#4-jenis-jenis-firewall)
 ##### [IPTables](#5-iptables)
 # 
@@ -32,7 +32,7 @@ Firewall diperlukan karena keamanan, diantara pertimbangan adanya firewall adala
 - [Denial of Service](#http://www.ilmuhacking.com/web-security/memahami-serangan-denial-of-service/)
 
 
-## **3. Firewall**
+## **3. Cara Kerja Firewall**
 
 ![Ilustrasi](img/illustration.jpg)
 Gambar 1. Ilustrasi Firewall (sumber: https://www.tunnelsup.com/images/firewall1.png)
@@ -84,6 +84,8 @@ dapat digambarkan dengan struktur seperti ini.
 Macam-macam table pada iptables
 
 #### a. **Filter Table**
+
+![filter table](/img/iptabes-tutorial-input-forward-output.jpg)
 
 Table ini adalah tabel default pada iptables. Jadi, jika kita tidak mendefinisikan table yang kita gunakan pada iptables, maka secara default menggunakan Filter table. Filter Table memiliki *built-in chain*, yaitu :
 - **INPUT** chain – Untuk memfilter paket yang menuju jaringan lokal. Contoh syntax:
@@ -290,4 +292,4 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Re
 2. Komputer di subnet RONDE tidak dapat diakses pada pukul 18.00 - 19.00
 3. Block port 80 agar KATSU tidak bisa mengakses HTTP
 
-![Topologi](/img/topologi.png)
+![Topologi](/img/topologi.jpg)
