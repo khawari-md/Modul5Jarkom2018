@@ -302,4 +302,4 @@ http://www.academia.edu/8133772/Pengertian_Iptables_dan_Command_pada_Linux_Debia
 3. Server COLENAK tidak diperbolehkan menerima koneksi SSH
 4. Semua paket yang menuju subnet PERKEDEL akan diarahkan ke CILOK
 
-![Topologi](/img/topologi.jpg)
+![Topologi](/img/topologi.png)
