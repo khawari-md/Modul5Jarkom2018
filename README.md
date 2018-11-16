@@ -293,6 +293,7 @@ $ iptables -L
 
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/ch-fw.html
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Reference_Guide/ch-iptables.html
+http://www.academia.edu/8133772/Pengertian_Iptables_dan_Command_pada_Linux_Debian
 
 ## SOAL LATIHAN
 
