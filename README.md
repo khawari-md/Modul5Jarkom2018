@@ -7,7 +7,7 @@ FIREWALL
 ##### [IPTables](#5-iptables)
 # 
 #
-## 1. **Definisi**
+## **1. Definisi**
 Berdasarkan [RFC 2828](http://www.faqs.org/rfcs/rfc2828.html)
 
 ```
@@ -32,7 +32,7 @@ Firewall diperlukan karena keamanan, diantara pertimbangan adanya firewall adala
 - [Denial of Service](#http://www.ilmuhacking.com/web-security/memahami-serangan-denial-of-service/)
 
 
-## **3. Cara Kerja Firewall**
+## **3. Cara kerja firewall**
 
 ![Ilustrasi](img/illustration.jpg)
 Gambar 1. Ilustrasi Firewall (sumber: https://www.tunnelsup.com/images/firewall1.png)
@@ -85,8 +85,6 @@ Macam-macam table pada iptables
 
 #### a. **Filter Table**
 
-![filter table](/img/iptabes-tutorial-input-forward-output.jpg)
-
 Table ini adalah tabel default pada iptables. Jadi, jika kita tidak mendefinisikan table yang kita gunakan pada iptables, maka secara default menggunakan Filter table. Filter Table memiliki *built-in chain*, yaitu :
 - **INPUT** chain – Untuk memfilter paket yang menuju jaringan lokal. Contoh syntax:
   ```bash
@@ -114,7 +112,7 @@ Table ini adalah tabel default pada iptables. Jadi, jika kita tidak mendefinisik
   Penjelasan:
   - ACCEPT semua paket keluar yang melewati firewall yang berasal dari 10.151.36.0/24
 
-
+![Filter Chain](/img/iptables-tutorial-input-forward-output.jpg)
 #### b. **NAT Table**
 
 NAT Table berfungsi untuk mentranslasikan jaringan lokal yang melewati firewall menuju jaringan luar. NAT Table memiliki *built-in chain*, yaitu :
@@ -134,7 +132,7 @@ Sebagai contoh, pada modul pengenalan UML kita telah menjalankan IP masquerading
    ```
     Rule diatas berarti, source address dari setiap paket yang keluar (`-o`) melalui `eth0` akan diubah menjadi IP dari `eth0` (`MASQUERADE`).
        
-
+![NAT Table](/img/nat-chains.gif)
 #### c. **Mangle Table**
 
 Mangle Table berfungsi untuk melakukan perubahan pada paket data. Perubahan yang dilakukan pada TCP header untuk memodifikasi QOS (*Quality of Service*) pada paket tersebut. Mangle Table memiliki *built-in chain*, yaitu :
@@ -176,21 +174,21 @@ $ man iptables-extension
 Secara umum, untuk memodifikasi aturan yang berlaku pada IPTables dengan menjalankan
 
 ```bash
-$ iptables [-t table] command chain rule-specification
-```
-
+$ iptables [-t table] command chain rules
+    jika tidak disebutkan tablenya maka defaultnya filter
+``` 
 Beberapa command yang sering digunakan pada iptables :
 
 | Command and Syntax                                        | Description                                                                             | Example                                         |
 | --------------------------------------------------------- |:--------------------------------------------------------------------------------------- |:----------------------------------------------- |
-| `-A, --append chain rule-specification`                   | menambahkan rules pada chain  | `iptables -A INPUT -s 10.151.36.0/24 -j DROP` 
+| `-A, --append chain rule-specification`                   | menambahkan rules pada chain  | `$ iptables -A INPUT -s 10.151.36.0/24 -j DROP` 
 | `-C, --check chain rule-specification`                    | mengecek rule apa saja yang berlaku pada chain    | `iptables -C INPUT -s 10.151.36.0/24 -j DROP`
-| `-D, --delete chain {rule-specification \| rulenum}`      | menghapus rules pada chain    | `iptables -D INPUT -s 10.151.36.0/24 -j DROP`
-| `-I, --insert chain [rulenum] rule-specification`         | menyisipkan rules pada urutan tertentu    | `iptables -I OUTPUT 2 -s 10.151.36.0/24 -j DROP`
-| `-R, --replace chain rulenum rule-specification`          | mengganti rules pada chain tertentu   | `iptables -R OUTPUT 2 -s 10.151.36.0/24 -j DROP`
-| `-L, --list [chain]`                                      | melihat daftar rules yang berlaku berdasarkan chain   | `iptables -L INPUT`
-| `-S, --list-rules [chain]`                                | melihat semua rules yang berlaku pada firewall   | `iptables -S INPUT`, `iptables -n -L -v --line-numbers`
-| `-F, --flush [chain]`                                     | menghilangkan semua rules pada chain tertentu (semua chain jika chain tidak disebutkan) | `iptables -F INPUT`
+| `-D, --delete chain {rule-specification \ rulenum}`      | menghapus rules pada chain    | `$ iptables -D INPUT -s 10.151.36.0/24 -j DROP`
+| `-I, --insert chain [rulenum] rule-specification`         | menyisipkan rules pada urutan tertentu    | `$ iptables -I OUTPUT 2 -s 10.151.36.0/24 -j DROP`
+| `-R, --replace chain rulenum rule-specification`          | mengganti rules pada chain tertentu   | `$ iptables -R OUTPUT 2 -s 10.151.36.0/24 -j DROP`
+| `-L, --list [chain]`                                      | melihat daftar rules yang berlaku berdasarkan chain   | `$ iptables -L INPUT`
+| `-S, --list-rules [chain]`                                | melihat semua rules yang berlaku pada firewall   | `$ iptables -S INPUT`, `iptables -n -L -v --line-numbers`
+| `-F, --flush [chain]`                                     | menghilangkan semua rules pada chain tertentu (semua chain jika chain tidak disebutkan) | `$ iptables -F INPUT`
 
 **Penjelasan :**
 
@@ -203,13 +201,16 @@ Beberapa parameter yang perlu diketahui :
 
 | Parameter                         | Descripton                        |
 | --------------------------------- | :-------------------------------- |
-| `-m, --match match`                 | mendefinisikan kesesuaian rule untuk tujuannya ke mana
-| `-j, --jump target`                 | mendefinisikan rule akan menggunakan taeget yang mana
+| `[!] -p, --protocol protocolename`    | mendefinisikan opsi port yang digunakan paket
+| `[!] -s, --source address`            | mendefinisikan opsi alamat asal dari paket
+| `[!] -d, --destination address`       | mendefinisikan opsi alamat tujuan dari paket
+| `-m, --match matchname`                 | mendefinisikan kesesuaian rule untuk tujuannya ke mana
+| `-j, --jump targetname`                 | mendefinisikan rule akan menggunakan taeget yang mana
 | `[!] -i, --in-interface name`       | mendefinisikan opsi interface yang dilihat masuk paketnya
 | `[!] -o, --out-interface name`      | mendefinisikan opsi interface yang dilihat keluar paketnya
-| `--line-numbers`                    | untuk melihat nomor urutan rules pada table
-| `--to`                              | untuk mendefinisikan alamat tujuan paket
-| `--from`                            | untuk mendefinisikan alamat asal paket
+
+**Penjelasan :**
+- `[!]` = bisa dinegasikan
 
 Untuk opsi command maupun parameter lebih lengkap dapat dilihat pada dokumentasi `iptables`, 
 
@@ -251,7 +252,7 @@ Penjelasan :
 - BLOK semua koneksi yang berasal dari subnet 10.151.36.0/24 
 
 
-#### DROP semua koneksi; ALLOW koneksi yang hanya menuju 192.168.36.5
+#### DROP semua koneksi, hanya ALLOW koneksi yang menuju 192.168.36.5
 
 ```bash
 $ iptables --policy OUTPUT DROP
@@ -261,6 +262,13 @@ $ iptables -A OUTPUT -d 192.168.36.5 -j ACCEPT
  - DROP semua koneksi yang keluar
  - ALLOW koneksi yang menuju alamat IP 192.168.1.1
 
+#### DROP koneksi HTTP
+
+```bash
+$ iptables -A INPUT -p tcp --dport 80 -j DROP
+```
+ Penjelasan :
+ - DROP semua paket yang protocolnya tcp dan menuju port 80 (http)
 
 #### Menyimpan Rules IPTables
 
@@ -288,8 +296,10 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Re
 
 ## SOAL LATIHAN
 
-1. Komputer di subnet CEMOE tidak diizinkan mengakses server PIZZA
-2. Komputer di subnet RONDE tidak dapat diakses pada pukul 18.00 - 19.00
-3. Block port 80 agar KATSU tidak bisa mengakses HTTP
+1. Komputer di subnet Chochodot tidak diizinkan mengakses server BASRENG
+2. Komputer di subnet DONCLANG tidak dapat diakses pada pukul 18.00 - 19.00
+3. Server COLENAK tidak diperbolehkan menerima koneksi SSH
+4. Semua paket yang menuju subnet PERKEDEL akan diarahkan ke CILOK
+5. Semua paket yang mengakses server BASRENG dengan http akan diarahkan menuju port 8080
 
 ![Topologi](/img/topologi.jpg)
