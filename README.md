@@ -1,10 +1,10 @@
 FIREWALL
 =======================
-##### [Definisi](#1-definisi)
-##### [Fungsi firewall](#2-fungsi-firewall)
-##### [Cara Kerja Firewall](#3-cara-kerja-firewall)
-##### [Jenis-jenis Firewall](#4-jenis-jenis-firewall)
-##### [IPTables](#5-iptables)
+1. ##### [Definisi](#1-definisi)
+2. ##### [Fungsi firewall](#2-fungsi-firewall)
+3. ##### [Cara Kerja Firewall](#3-cara-kerja-firewall)
+4. ##### [Jenis-jenis Firewall](#4-jenis-jenis-firewall)
+5. ##### [IPTables](#5-iptables)
 # 
 #
 ## **1. Definisi**
@@ -297,9 +297,9 @@ http://www.academia.edu/8133772/Pengertian_Iptables_dan_Command_pada_Linux_Debia
 
 ## SOAL LATIHAN
 
-1. Komputer di subnet Chochodot tidak diizinkan mengakses server BASRENG
-2. Komputer di subnet DONCLANG tidak dapat diakses pada pukul 18.00 - 19.00
-3. Server COLENAK tidak diperbolehkan menerima koneksi SSH
-4. Semua paket yang menuju subnet PERKEDEL akan diarahkan ke CILOK
+1. Komputer di subnet MARIMAS tidak diizinkan mengakses server KATSU
+2. Komputer di subnet FINTO tidak dapat diakses pada pukul 18.00 - 19.00
+3. Server PIZZA tidak diperbolehkan menerima koneksi SSH
+4. Semua paket yang menuju subnet TEH SISRI akan diarahkan ke JASJUS
 
-![Topologi](/img/topologi.png)
+![Topologi](/img/topologi.jpg)
