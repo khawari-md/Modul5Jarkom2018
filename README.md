@@ -300,6 +300,5 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Re
 2. Komputer di subnet DONCLANG tidak dapat diakses pada pukul 18.00 - 19.00
 3. Server COLENAK tidak diperbolehkan menerima koneksi SSH
 4. Semua paket yang menuju subnet PERKEDEL akan diarahkan ke CILOK
-5. Semua paket yang mengakses server BASRENG dengan http akan diarahkan menuju port 8080
 
 ![Topologi](/img/topologi.jpg)
